@@ -52,3 +52,18 @@ DESCRIBE clients;
 
 -- Fusionner les colonners prenom et nom
 -- SELECT id,CONCAT(prenom," ",nom) as nom_complet FROM clients;
+
+-- Suppression de la colonne "telephone" de la table "clients"
+-- ALTER TABLE clients DROP COLUMN telephone;
+
+
+-- camel case : idProduit
+-- Pascal case : IdProduit
+-- snake case : id_produit
+
+-- [ clients ]<-- [ telephones ]
+-- SELECT * FROM clients INNER JOIN telephones ON clients.id=telephones.id_client;
+
+-- SELECT clients.id,clients.prenom,clients.nom,telephones.numero FROM clients INNER JOIN telephones ON clients.id=telephones.id_client;
+
+SELECT clients.id,CONCAT(clients.prenom," ",clients.nom) as nom_complet,telephones.numero FROM clients INNER JOIN telephones ON clients.id=telephones.id_client;
